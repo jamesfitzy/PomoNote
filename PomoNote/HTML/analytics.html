@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Analytics</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/CSS/analytics.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <div class="navbar">
+        <!-- Title -->
+        <a class="website-name" href="index.html">PomoNotes</a>
+        <div class="icon-group">
+            <!-- Analytics icon -->
+            <a href="analytics.html"><i class="fa fa-fw fa-chart-bar"></i> Analytics</a>
+            <!-- to do list icon -->
+            <a href="list.html"><i class="fa fa-fw fa-list"></i> List</a>
+            <!-- Sticy note icon -->
+            <a href="notes.html"><i class="fa fa-fw fa-sticky-note"></i> Notes</a>
+            <!-- clock icon -->
+            <a href="Timer.html"><i class="fa fa-fw fa-clock"></i> Timer</a>
+            <!-- home page -->
+            <a href="index.html"><i class="fa fa-fw fa-home"></i> Home</a>
+        </div>
+    </div>
+    <h1>ANALYTICS</h1>
+
+    <div class="chart-container">
+        <canvas id="studyChart"></canvas>
+    </div>
+    
+    <div class="calendar-container">
+        <input type="week" id="weekPicker" name="weekPicker" min="2023-W01" max="2024-W52">
+    </div>
+    
+    <div id="completedScore"></div>
+    
+    <script src="/JS/analytics.js"></script>
+
+
+    
+</body>
+</html>

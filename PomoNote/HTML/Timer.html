@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PomoNote</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
+    <!-- <link rel="stylesheet" href="CSS/main.css"> -->
+    <!-- link it to the main css in th CSS folder -->
+    <link rel="stylesheet" href="/CSS/Timer.css">
+</head>
+
+<div class="navbar">
+  <!-- Title -->
+  <a class="website-name" href="index.html">PomoNotes</a>
+  <div class="icon-group">
+      <!-- Analytics icon -->
+      <a href="analytics.html"><i class="fa fa-fw fa-chart-bar"></i> Analytics</a>
+      <!-- to do list icon -->
+      <a href="list.html"><i class="fa fa-fw fa-list"></i> List</a>
+      <!-- Sticy note icon -->
+      <a href="notes.html"><i class="fa fa-fw fa-sticky-note"></i> Notes</a>
+      <!-- clock icon -->
+      <a href="Timer.html"><i class="fa fa-fw fa-clock"></i> Timer</a>
+      <!-- home page -->
+      <a href="index.html"><i class="fa fa-fw fa-home"></i> Home</a>
+  </div>
+</div>
+
+    <h1 class = "section">POMODORO TIMER</h1>
+    <header>
+        <div class="session">
+          <div class="sessionCtrl">
+            <p>Focus length</p>
+            <button class="minus" onclick="decreaseFocusLength()">-</button><span class="time" id="focusLength"></span>
+            <button class="plus" onclick="increaseFocusLength()">+</button>
+          </div>
+          <div class="sessionCtrl">
+            <p>Short Break length</p>
+            <button class="minus" onclick="decreaseBreakLength()">-</button><span class="time" id="breakLength"></span>
+            <button class="plus" onclick="increaseBreakLength()">+</button>
+          </div>
+          <div class="sessionCtrl">
+            <p>Long Break Length</p>
+            <button class="minus" onclick="decreaseLongBreakLength()">-</button><span class="time" id="longBreakLength"></span>
+            <button class="plus" onclick="increaseLongBreakLength()">+</button>
+          </div>
+        </div>
+      </header>
+      <section>
+        <div class="timer">
+          <p class = "variable1" id = "minutes"></p>
+          <p id = "variable2" class = "variable2 hide">:</p>
+          <p class = "variable3" id = "seconds"></p>
+        </div>
+
+        <div class = "btn-container">
+          <button id="btn-reset" onclick = "reset()">
+            <i class="fas fa-redo-alt"></i>
+          </button>
+          <button class = "btn-start" id="sessionName" onclick= "start()"></button>
+          <button id="btn-skip" onclick = "skip()">
+            <i class="fas fa-step-forward"></i>
+          </button> 
+        </div>
+      </section>
+      
+      <div class="session-counter">
+        <div >
+          <p>Focus Sessions</p>
+          <span id="focusCount">0</span>
+        </div>
+        <div class="sessionCtrl">
+          <p>Short Break Sessions</p>
+          <span id="shortBreakCount">0</span>
+        </div>
+        <div class="sessionCtrl">
+          <p>Long Break Sessions</p>
+          <span id="longBreakCount">0</span>
+        </div>
+      </div>
+    <script src="/JS/Timer.js"></script>
+</body>
+
+
+</html>

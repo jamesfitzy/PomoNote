@@ -1,0 +1,137 @@
+* {
+    box-sizing: border-box;
+    font-family: "Poppins", sans-serif;
+}
+
+body {
+    background-color: #5c5c5c;
+    color: floralwhite;
+    margin: 0;
+}
+
+.pomonotes-icon {
+    width: 50px;
+    height: 50px;
+    position: relative;
+    margin-right: 10px;
+}
+
+.navbar {
+    background-color: transparent;
+    overflow: hidden;
+    padding: 10px 20px;
+    display: flex;
+    justify-content: space-between;
+    width: 50%;
+    margin: 0 auto;
+}
+
+.website-name {
+    color: floralwhite;
+    font-size: 20px;
+    font-weight: bold;
+    text-decoration: none;
+    padding: 14px 20px;
+}
+
+.navbar a:not(.website-name) {
+    float: right;
+    color: white;
+    text-align: center;
+    padding: 14px 20px;
+    text-decoration: none;
+    font-size: 17px;
+}
+
+.navbar a {
+    float: right;
+    display: block;
+    color: floralwhite;
+    text-align: center;
+    padding: 14px 20px;
+    text-decoration: none;
+    font-size: 17px;
+}
+
+.navbar a:hover {
+    background-color: #3e3f43;
+    color: floralwhite;
+}
+
+h1 {
+    text-align: center;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 50px;
+    color: floralwhite;
+}
+
+#text {
+    font-size: 1.2em;
+    border: none;
+    padding: 10px;
+    width: 95%;
+    margin: 10px auto;
+    text-align: justify;
+}
+
+.main-content {
+    text-align: center;
+    padding: 20px;
+}
+
+.main-content h1 {
+    margin: 20px 0;
+}
+
+.feature {
+    display: inline-block;
+    width: 30%;
+    margin: 10px;
+    vertical-align: top;
+    padding-top: 5%;
+    padding-bottom: 5%;
+}
+
+.feature img {
+    width: 100%;
+    height: auto;
+}
+
+.feature img {
+    width: 100%;
+    aspect-ratio: 3/2;
+    object-fit: contain;
+}
+
+.feature h2 {
+    margin: 10px 0;
+}
+
+.feature p {
+    margin-bottom: 20px;
+}
+
+.get-started-btn {
+    padding: 10px 20px;
+    background-color: #5cb85c;
+    color: floralwhite;
+    text-decoration: none;
+    border-radius: 5px;
+    font-weight: bold;
+    display: block;
+    width: fit-content;
+    margin: 20px auto;
+    text-align: center;
+}
+
+
+.get-started-btn:hover {
+    background-color: #4cae4c;
+}
+
+@media (max-width: 768px) {
+    .feature {
+        width: 100%;
+        margin: 10px 0;
+    }
+}

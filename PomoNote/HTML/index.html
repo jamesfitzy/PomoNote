@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome To PomoNotes</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/CSS/index.css">
+    <link rel="stylesheet" href="/CSS/login.css">
+</head>
+
+<body>
+    <div class="navbar">
+        <!-- Title -->
+        <a class="website-name" href="index.html">PomoNotes</a>
+        <div class="icon-group">
+            <!-- Analytics icon -->
+            <a href="analytics.html"><i class="fa fa-fw fa-chart-bar"></i> Analytics</a>
+            <!-- to do list icon -->
+            <a href="list.html"><i class="fa fa-fw fa-list"></i> List</a>
+            <!-- Sticky note icon -->
+            <a href="notes.html"><i class="fa fa-fw fa-sticky-note"></i> Notes</a>
+
+            <a href="Timer.html"><i class="fa fa-fw fa-clock"></i> Timer</a>
+            <!-- home page -->
+            <a href="index.html"><i class="fa fa-fw fa-home"></i> Home</a>
+        </div>
+    </div>
+
+    <div class="main-content">
+        <h1>WELCOME TO POMONOTES</h1>
+
+        <div class="feature" id="pomodoro">
+            <img src="/images/pomonotes.png" alt="Pomodoro Timer">
+            <h2>Pomodoro Timer</h2>
+            <p id="text">Time management made easy with the Pomodoro technique. Break down your work into intervals,
+                traditionally
+                25 minutes in length, separated by short breaks. This method is proven to increase productivity by
+                creating a better work-life balance.</p>
+        </div>
+
+        <div class="feature" id="sticky-notes">
+            <img src="/images/stickynotes.png" alt="Sticky Notes">
+            <h2>Sticky Notes</h2>
+            <p id="text">Quickly capture and recall important tasks with digital sticky notes. They are perfect for
+                jotting down
+                thoughts, reminders, or important information that you need to keep front and center in your workspace.
+            </p>
+        </div>
+
+        <div class="feature" id="todo-list">
+            <img src="/images/todolist.png" alt="To-do List">
+            <h2>To-do Lists</h2>
+            <p id="text">Keep track of your tasks with a simple to-do list. Organize your daily tasks, set priorities,
+                and focus
+                on what really matters. Our to-do lists help you stay organized and productive, no matter the complexity
+                of your project.</p>
+        </div>
+    </div>
+
+    <div class="center">
+        <button id="show-login"></button>
+    </div>
+    <div class="popup">
+        <div class="close-btn">&times;</div>
+        <div class="form login-form">
+            <h2>Log in</h2>
+            <div class="form-element">
+                <label for="email">Email</label>
+                <input type="text" id="email" placeholder="Enter email">
+            </div>
+            <div class="form-element">
+                <label for="password">Password</label>
+                <input type="password" id="password" placeholder="Enter password">
+            </div>
+            <div class="form-element">
+                <input type="checkbox" id="remember-me">
+                <label for="remember-me">Remember me</label>
+            </div>
+            <div class="form-element">
+                <button>Log in</button>
+            </div>
+            <div class="form-element">
+                <p class="signup-text">Doesn't have an account yet? <a href="#" id="sign-up-link">Sign Up</a></p>
+            </div>
+            <div class="form-element">
+                <a href="#" id="forgot-password-link">Forgot password?</a>
+            </div>
+        </div>
+        <div class="form password-reset-form" style="display: none;">
+            <div class="back-btn">Back</div>
+            <h2>Reset Password</h2>
+            <div class="form-element">
+                <label for="reset-email">Enter your email</label>
+                <input type="text" id="reset-email" placeholder="Enter email">
+            </div>
+            <div class="form-element">
+                <button id="reset-password-btn">Reset Password</button>
+            </div>
+        </div>
+        <div class="form signup-form" style="display: none;">
+            <div class="back-btn">Back</div>
+            <h2>Sign Up</h2>
+            <div class="form-element">
+                <label for="new-username">Username</label>
+                <input type="text" id="new-username" placeholder="Enter username">
+            </div>
+            <div class="form-element">
+                <label for="new-email">Email</label>
+                <input type="text" id="new-email" placeholder="Enter email">
+            </div>
+            <div class="form-element">
+                <label for="new-password">Password</label>
+                <input type="password" id="new-password" placeholder="Enter password">
+            </div>
+
+            <div class="form-element">
+                <button id="signup-btn">Sign Up</button>
+            </div>
+        </div>
+    </div>
+    <script src="/JS/LogIn.js"></script>
+    <script type="module">
+        // Import Firebase functions
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.0/firebase-app.js";
+        import { getDatabase, set, ref } from "https://www.gstatic.com/firebasejs/10.7.0/firebase-database.js";
+        import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.7.0/firebase-auth.js";
+
+        // Firebase configuration
+        const firebaseConfig = {
+            apiKey: "AIzaSyAKR__CadBwY0M1S6ydfIfdy5veVIoBEAg",
+            authDomain: "pomonotes.firebaseapp.com",
+            databaseURL: "https://pomonotes-default-rtdb.firebaseio.com",
+            projectId: "pomonotes",
+            storageBucket: "pomonotes.appspot.com",
+            messagingSenderId: "472406593701",
+            appId: "1:472406593701:web:1b24143dc2b88699ba3d4c",
+            measurementId: "G-6FSSC1HBCV"
+        };
+
+        // Initialize Firebase
+        const app = initializeApp(firebaseConfig);
+        const auth = getAuth(app);
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const startButton = document.getElementById('show-login');
+            const loginFormButton = document.querySelector('.login-form button');
+
+            // Function to toggle start/logout button
+            function toggleStartLogout(isLoggedIn) {
+                if (isLoggedIn) {
+                    startButton.textContent = 'Logout';
+                    startButton.onclick = logoutHandler;
+                } else {
+                    startButton.textContent = 'Get Started';
+                    startButton.onclick = null; // Remove onclick handler
+                }
+            }
+
+            // Logout handler
+            function logoutHandler(e) {
+                signOut(auth).then(() => {
+                    console.log("Logged out");
+                    alert("Logged out");
+                    toggleStartLogout(false);
+                }).catch((error) => {
+                    console.error(error);
+                });
+            }
+
+            // Login handler
+            function loginHandler(e) {
+                e.preventDefault();
+                const email = document.getElementById('email').value.trim();
+                const password = document.getElementById('password').value.trim();
+
+                signInWithEmailAndPassword(auth, email, password)
+                    .then((userCredential) => {
+                        console.log("Logged in", userCredential.user);
+                        alert("Logged in");
+                        toggleStartLogout(true);
+                    })
+                    .catch((error) => {
+                        console.error(error.message);
+                        alert("Login error: " + error.message);
+                    });
+            }
+
+            if (loginFormButton) {
+                loginFormButton.addEventListener('click', loginHandler);
+            } else {
+                console.error('Login form button not found');
+            }
+
+            // Sign up process
+            const signupBtn = document.getElementById('signup-btn');
+            if (!signupBtn) {
+                console.error('Signup button not found');
+                return;
+            }
+
+            signupBtn.addEventListener('click', (e) => {
+                e.preventDefault();
+                const email = document.getElementById('new-email').value.trim();
+                const password = document.getElementById('new-password').value.trim();
+                const username = document.getElementById('new-username').value.trim();
+
+                createUserWithEmailAndPassword(auth, email, password)
+                    .then((userCredential) => {
+                        console.log("User created", userCredential.user);
+                        alert("User created");
+                        set(ref(getDatabase(app), 'users/' + userCredential.user.uid), {
+                            username: username,
+                            email: email
+                        });
+                        toggleStartLogout(true);
+                    })
+                    .catch((error) => {
+                        console.error(error.message);
+                        alert("Signup error: " + error.message);
+                    });
+            });
+
+            // Check auth state on page load
+            onAuthStateChanged(auth, (user) => {
+                if (user) {
+                    // User is signed in
+                    toggleStartLogout(true);
+                } else {
+                    // No user is signed in
+                    toggleStartLogout(false);
+                }
+            });
+        });
+    </script>
+</body>
+
+</html>
